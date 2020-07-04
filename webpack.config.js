@@ -1,4 +1,4 @@
-const path = require("path");
+const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 // entry -> output
 
@@ -8,14 +8,14 @@ module.exports = (env) => {
 
     console.log('env', env)
     return {
-        entry: "./src/app.js",
+        entry: './src/app.js',
         output: {
-            path: path.join(__dirname, "public" ),
-            filename: "bundle.js"
+            path: path.join(__dirname, 'public', 'dist'),
+            filename: 'bundle.js'
         },
         module: {
             rules: [{
-                loader: "babel-loader",
+                loader: 'babel-loader',
                 test: /\.js$/,
                 exclude: /node_modules/
             }, {
@@ -23,7 +23,7 @@ module.exports = (env) => {
                 use: CSSExtract.extract({
                     use:[
                         {
-                            loader: "css-loader",
+                            loader: 'css-loader',
                             options: {
                                 sourceMap: true
                             }
@@ -41,11 +41,12 @@ module.exports = (env) => {
         plugins: [
             CSSExtract
         ],
-        devtool: isProduction ? "source-map" : "inline-source-map",
+        devtool: isProduction ? 'source-map' : 'inline-source-map',
         devServer: {
-            contentBase: path.join(__dirname, "public"),
+            contentBase: path.join(__dirname, 'public'),
             //historyApiFallback tells the server that the routing will be handled by client side code instead of server side
             historyApiFallback: true,
+            publicPath: '/dist/'
         }
     };
 }
