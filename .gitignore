@@ -7,3 +7,7 @@ public/dist/
 babel.txt
 package-lock.zip
 xnode_modules.zip
+xxbackup.zip
+.env.development
+.env.test
+src/firebase/firebasePlayerground.js
